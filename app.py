@@ -14,6 +14,10 @@ def termos():
 def privacidade():
     return send_from_directory('.', 'privacidade.html')
 
+@app.route('/exclusao-de-dados')
+def exclusao_de_dados():
+    return send_from_directory('.', 'exclusao-de-dados.html')
+
 @app.route('/logo.jpg')
 def logo():
     return send_from_directory('.', 'logo.jpg')
