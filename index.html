@@ -2,63 +2,944 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>CuidaAi - Cuidado Preventivo com IA</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CuidaAi Tech — Automações, Landing Pages e Plataformas de Atendimento</title>
+  <meta name="description" content="Desenvolvemos automações com IA, landing pages de alta conversão e plataformas de atendimento integradas ao WhatsApp para empresas que querem vender e atender melhor.">
+  <meta property="og:title" content="CuidaAi Tech — Tecnologia que trabalha por você">
+  <meta property="og:description" content="Automações com IA, landing pages e plataformas de atendimento no WhatsApp.">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --primary: #14a39a;
+      --primary-dark: #0e7f78;
+      --accent: #4fd1c5;
+      --ink: #0f2a3a;
+      --text: #2a3b47;
+      --muted: #5f707c;
+      --bg: #f6f9fa;
+      --surface: #ffffff;
+      --border: #e1e8ec;
+      --hero-bg: #0b1f2b;
+      --radius: 16px;
+      --shadow: 0 10px 30px rgba(15, 42, 58, .08);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
     body {
-      font-family: Arial, sans-serif;
-      text-align: center;
-      background-color: #f9f9f9;
-      padding: 2rem;
+      margin: 0;
+      font-family: "Plus Jakarta Sans", Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.6;
     }
-    img.logo {
-      max-width: 200px;
-      margin-bottom: 1rem;
+
+    a { color: inherit; }
+    img, svg { display: block; }
+
+    .container {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
     }
-    .video-container {
-      position: relative;
-      padding-bottom: 56.25%;
-      height: 0;
-      overflow: hidden;
-      margin: 2rem auto;
-      max-width: 800px;
+
+    /* ---------- Header ---------- */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(11, 31, 43, .92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255, 255, 255, .06);
     }
-    .video-container iframe {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%;
-      height: 100%;
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 14px 0;
     }
-    a.button {
-      display: inline-block;
-      margin: 1rem;
-      padding: 1rem 2rem;
-      background: #146C94;
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
       color: #fff;
       text-decoration: none;
-      border-radius: 6px;
+      font-weight: 800;
+      font-size: 1.2rem;
+      letter-spacing: -.01em;
     }
-    a.button:hover {
-      background: #0d4f6d;
+
+    .brand span { color: var(--accent); }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-links a {
+      color: rgba(255, 255, 255, .78);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: .95rem;
+    }
+
+    .nav-links a:hover { color: #fff; }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 14px 26px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 1rem;
+      text-decoration: none;
+      border: 2px solid transparent;
+      transition: transform .15s ease, background .15s ease, border-color .15s ease;
+      cursor: pointer;
+    }
+
+    .btn:hover { transform: translateY(-1px); }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #fff;
+    }
+
+    .btn-primary:hover { background: var(--primary-dark); }
+
+    .btn-ghost {
+      color: #fff;
+      border-color: rgba(255, 255, 255, .25);
+    }
+
+    .btn-ghost:hover { border-color: #fff; }
+
+    .btn-sm { padding: 10px 20px; font-size: .9rem; }
+
+    /* ---------- Hero ---------- */
+    .hero {
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(900px 500px at 85% -10%, rgba(79, 209, 197, .22), transparent 60%),
+        radial-gradient(700px 400px at -10% 110%, rgba(20, 163, 154, .18), transparent 60%),
+        var(--hero-bg);
+      color: #fff;
+      padding: 96px 0 112px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 56px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      padding: 6px 14px;
+      border-radius: 999px;
+      background: rgba(79, 209, 197, .12);
+      color: var(--accent);
+      font-size: .85rem;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.2rem, 5vw, 3.6rem);
+      line-height: 1.08;
+      letter-spacing: -.03em;
+      margin: 0 0 20px;
+    }
+
+    .hero h1 em {
+      font-style: normal;
+      background: linear-gradient(90deg, var(--accent), #8be9df);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero p.lead {
+      font-size: 1.15rem;
+      color: rgba(255, 255, 255, .75);
+      max-width: 560px;
+      margin: 0 0 32px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .hero-stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 36px;
+      margin-top: 48px;
+    }
+
+    .hero-stats strong {
+      display: block;
+      font-size: 1.6rem;
+      color: #fff;
+    }
+
+    .hero-stats span {
+      font-size: .9rem;
+      color: rgba(255, 255, 255, .6);
+    }
+
+    /* Chat mockup */
+    .chat {
+      background: rgba(255, 255, 255, .04);
+      border: 1px solid rgba(255, 255, 255, .1);
+      border-radius: 24px;
+      padding: 20px;
+      box-shadow: 0 30px 60px rgba(0, 0, 0, .35);
+    }
+
+    .chat-head {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid rgba(255, 255, 255, .08);
+      margin-bottom: 16px;
+    }
+
+    .avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+    }
+
+    .chat-head small {
+      display: block;
+      color: var(--accent);
+      font-size: .78rem;
+    }
+
+    .bubble {
+      max-width: 82%;
+      padding: 10px 14px;
+      border-radius: 16px;
+      font-size: .92rem;
+      margin-bottom: 10px;
+      line-height: 1.45;
+    }
+
+    .bubble.in {
+      background: rgba(255, 255, 255, .08);
+      border-bottom-left-radius: 4px;
+    }
+
+    .bubble.out {
+      margin-left: auto;
+      background: var(--primary);
+      border-bottom-right-radius: 4px;
+    }
+
+    .bubble.tag {
+      max-width: 100%;
+      background: transparent;
+      border: 1px dashed rgba(79, 209, 197, .4);
+      color: var(--accent);
+      font-size: .8rem;
+      text-align: center;
+    }
+
+    /* ---------- Sections ---------- */
+    section { padding: 96px 0; }
+
+    .section-head {
+      text-align: center;
+      max-width: 680px;
+      margin: 0 auto 56px;
+    }
+
+    .section-head .kicker {
+      color: var(--primary);
+      font-weight: 700;
+      font-size: .85rem;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+
+    .section-head h2 {
+      color: var(--ink);
+      font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+      line-height: 1.15;
+      letter-spacing: -.02em;
+      margin: 10px 0 14px;
+    }
+
+    .section-head p {
+      color: var(--muted);
+      font-size: 1.05rem;
+      margin: 0;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 32px;
+      box-shadow: var(--shadow);
+      transition: transform .2s ease, border-color .2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: var(--accent);
+    }
+
+    .icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      background: rgba(20, 163, 154, .1);
+      color: var(--primary);
+      margin-bottom: 20px;
+    }
+
+    .card h3 {
+      color: var(--ink);
+      font-size: 1.25rem;
+      margin: 0 0 10px;
+    }
+
+    .card p {
+      color: var(--muted);
+      margin: 0 0 18px;
+    }
+
+    .card ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .card li {
+      position: relative;
+      padding-left: 26px;
+      margin-bottom: 8px;
+      font-size: .95rem;
+    }
+
+    .card li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: .45em;
+      width: 14px;
+      height: 8px;
+      border-left: 2px solid var(--primary);
+      border-bottom: 2px solid var(--primary);
+      transform: rotate(-45deg);
+    }
+
+    /* Process */
+    .process { background: var(--surface); }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      counter-reset: step;
+    }
+
+    .step {
+      position: relative;
+      padding: 28px 24px;
+      border-radius: var(--radius);
+      background: var(--bg);
+      border: 1px solid var(--border);
+    }
+
+    .step::before {
+      counter-increment: step;
+      content: "0" counter(step);
+      display: block;
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--primary);
+      opacity: .35;
+      margin-bottom: 8px;
+    }
+
+    .step h3 {
+      color: var(--ink);
+      margin: 0 0 8px;
+      font-size: 1.1rem;
+    }
+
+    .step p {
+      margin: 0;
+      color: var(--muted);
+      font-size: .95rem;
+    }
+
+    /* Case */
+    .case-box {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+      background: var(--hero-bg);
+      color: #fff;
+      border-radius: 24px;
+      padding: 56px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .case-box::after {
+      content: "";
+      position: absolute;
+      right: -120px;
+      top: -120px;
+      width: 360px;
+      height: 360px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(79, 209, 197, .25), transparent 70%);
+      pointer-events: none;
+    }
+
+    .case-box .kicker {
+      color: var(--accent);
+      font-weight: 700;
+      font-size: .85rem;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+
+    .case-box h2 {
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      line-height: 1.2;
+      margin: 10px 0 16px;
+    }
+
+    .case-box p { color: rgba(255, 255, 255, .75); }
+
+    .case-list {
+      display: grid;
+      gap: 14px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .case-item {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      padding: 18px;
+      border-radius: 14px;
+      background: rgba(255, 255, 255, .05);
+      border: 1px solid rgba(255, 255, 255, .08);
+    }
+
+    .case-item strong { display: block; color: #fff; }
+    .case-item span { color: rgba(255, 255, 255, .65); font-size: .92rem; }
+
+    .dot {
+      flex: none;
+      width: 10px;
+      height: 10px;
+      margin-top: 7px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 0 4px rgba(79, 209, 197, .18);
+    }
+
+    /* Benefits */
+    .benefits {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+
+    .benefit h3 {
+      color: var(--ink);
+      font-size: 1.05rem;
+      margin: 14px 0 6px;
+    }
+
+    .benefit p {
+      color: var(--muted);
+      margin: 0;
+      font-size: .95rem;
+    }
+
+    /* FAQ */
+    .faq { background: var(--surface); }
+
+    .faq-list {
+      max-width: 780px;
+      margin: 0 auto;
+    }
+
+    details {
+      border-bottom: 1px solid var(--border);
+      padding: 20px 0;
+    }
+
+    summary {
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      font-weight: 700;
+      color: var(--ink);
+      font-size: 1.05rem;
+    }
+
+    summary::-webkit-details-marker { display: none; }
+
+    summary::after {
+      content: "+";
+      color: var(--primary);
+      font-size: 1.4rem;
+      line-height: 1;
+      transition: transform .2s ease;
+    }
+
+    details[open] summary::after { transform: rotate(45deg); }
+
+    details p {
+      color: var(--muted);
+      margin: 12px 0 0;
+    }
+
+    /* CTA */
+    .cta {
+      text-align: center;
+      background:
+        radial-gradient(600px 300px at 50% 0%, rgba(79, 209, 197, .25), transparent 70%),
+        var(--hero-bg);
+      color: #fff;
+    }
+
+    .cta h2 {
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      letter-spacing: -.02em;
+      line-height: 1.15;
+      margin: 0 0 16px;
+    }
+
+    .cta p {
+      color: rgba(255, 255, 255, .75);
+      font-size: 1.1rem;
+      max-width: 600px;
+      margin: 0 auto 32px;
+    }
+
+    .cta .hero-actions { justify-content: center; }
+
+    /* Footer */
+    footer {
+      background: #08171f;
+      color: rgba(255, 255, 255, .6);
+      padding: 48px 0 32px;
+      font-size: .92rem;
+    }
+
+    .footer-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 32px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid rgba(255, 255, 255, .08);
+    }
+
+    .footer-grid h4 {
+      color: #fff;
+      margin: 0 0 12px;
+      font-size: .95rem;
+    }
+
+    .footer-grid ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .footer-grid li { margin-bottom: 8px; }
+
+    .footer-grid a {
+      text-decoration: none;
+    }
+
+    .footer-grid a:hover { color: #fff; }
+
+    .footer-bottom {
+      padding-top: 24px;
+      text-align: center;
+    }
+
+    .wa-float {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      z-index: 60;
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      background: #25d366;
+      display: grid;
+      place-items: center;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, .25);
+      transition: transform .15s ease;
+    }
+
+    .wa-float:hover { transform: scale(1.06); }
+
+    /* ---------- Responsive ---------- */
+    @media (max-width: 960px) {
+      .hero-grid, .case-box { grid-template-columns: 1fr; }
+      .grid-3 { grid-template-columns: 1fr; }
+      .steps, .benefits { grid-template-columns: repeat(2, 1fr); }
+      .nav-links li:not(:last-child) { display: none; }
+      .case-box { padding: 36px 24px; }
+    }
+
+    @media (max-width: 560px) {
+      .hero { padding: 64px 0 80px; }
+      section { padding: 72px 0; }
+      .steps, .benefits { grid-template-columns: 1fr; }
+      .hero-actions .btn { width: 100%; }
+      .hero-stats { gap: 24px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      * { transition: none !important; }
     }
   </style>
 </head>
 <body>
 
-  <img src="logo.jpg" alt="CuidaAi Logo" class="logo">
+  <header>
+    <nav class="container nav" aria-label="Principal">
+      <a href="#" class="brand" aria-label="CuidaAi Tech — início">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <rect width="32" height="32" rx="9" fill="#14a39a"/>
+          <path d="M10 12l-4 4 4 4M22 12l4 4-4 4M18 9l-4 14" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        CuidaAi<span>Tech</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#servicos">Serviços</a></li>
+        <li><a href="#como-funciona">Como funciona</a></li>
+        <li><a href="#cases">Cases</a></li>
+        <li><a href="#faq">Dúvidas</a></li>
+        <li><a href="#contato" class="btn btn-primary btn-sm">Fale conosco</a></li>
+      </ul>
+    </nav>
+  </header>
 
-  <h1>Bem-vindo ao CuidaAi</h1>
-  <p>Cuidado preventivo com apoio de inteligência artificial</p>
+  <main>
+    <!-- Hero -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">Automação · Landing Pages · Atendimento com IA</span>
+          <h1>Tecnologia que <em>atende, vende e trabalha</em> por você 24 horas.</h1>
+          <p class="lead">Desenvolvemos automações inteligentes, landing pages que convertem e plataformas de atendimento integradas ao WhatsApp — para sua empresa crescer sem aumentar a equipe.</p>
+          <div class="hero-actions">
+            <a href="https://wa.me/5581995230231?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento." class="btn btn-primary" target="_blank" rel="noopener">Quero um orçamento</a>
+            <a href="#servicos" class="btn btn-ghost">Conhecer serviços</a>
+          </div>
+          <div class="hero-stats">
+            <div><strong>24/7</strong><span>atendimento automatizado</span></div>
+            <div><strong>WhatsApp</strong><span>API oficial da Meta</span></div>
+            <div><strong>Sob medida</strong><span>para o seu processo</span></div>
+          </div>
+        </div>
 
-  <div class="video-container">
-    <iframe src="https://www.youtube.com/embed/87BeUVPYA_c" 
-            title="Apresentação CuidaAi" 
-            frameborder="0" allowfullscreen></iframe>
-  </div>
+        <div class="chat" aria-hidden="true">
+          <div class="chat-head">
+            <div class="avatar">IA</div>
+            <div>
+              <strong>Assistente da sua empresa</strong>
+              <small>online agora</small>
+            </div>
+          </div>
+          <div class="bubble in">Olá! Gostaria de agendar um horário para amanhã.</div>
+          <div class="bubble out">Claro! Tenho horários às 9h, 14h e 16h30. Qual prefere? 😊</div>
+          <div class="bubble in">14h, por favor.</div>
+          <div class="bubble out">Pronto! Agendado para amanhã às 14h. Enviarei um lembrete 1h antes.</div>
+          <div class="bubble tag">⚡ Agenda atualizada · CRM registrado · Equipe notificada</div>
+        </div>
+      </div>
+    </section>
 
-  <a href="termos.html" class="button">📄 Termos de Uso</a>
-  <a href="privacidade.html" class="button">🔐 Política de Privacidade</a>
-  <a href="exclusao-de-dados.html" class="button">🗑️ Exclusão de Dados</a>
+    <!-- Serviços -->
+    <section id="servicos">
+      <div class="container">
+        <div class="section-head">
+          <span class="kicker">O que fazemos</span>
+          <h2>Soluções digitais para vender mais e atender melhor</h2>
+          <p>Do primeiro clique ao pós-venda: conectamos marketing, atendimento e operação em um fluxo único e automatizado.</p>
+        </div>
 
+        <div class="grid-3">
+          <article class="card">
+            <div class="icon">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+            </div>
+            <h3>Automações com IA</h3>
+            <p>Eliminamos tarefas repetitivas e conectamos seus sistemas para que tudo aconteça sozinho.</p>
+            <ul>
+              <li>Agentes de IA que respondem e qualificam leads</li>
+              <li>Integração entre CRM, planilhas, ERPs e APIs</li>
+              <li>Disparo de lembretes, cobranças e follow-ups</li>
+              <li>Relatórios e alertas automáticos</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <div class="icon">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 14h8M8 17h5"/></svg>
+            </div>
+            <h3>Landing Pages</h3>
+            <p>Páginas rápidas, bonitas e pensadas para transformar visitantes em clientes.</p>
+            <ul>
+              <li>Design responsivo e focado em conversão</li>
+              <li>Otimizadas para Google e anúncios Meta</li>
+              <li>Integração com pixel, analytics e formulários</li>
+              <li>Leads direto no WhatsApp ou CRM</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <div class="icon">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.3 7.5L3 21l2-5.5A8.4 8.4 0 1 1 21 11.5z"/><path d="M8 11h.01M12 11h.01M16 11h.01"/></svg>
+            </div>
+            <h3>Plataformas de Atendimento</h3>
+            <p>Centralize conversas, organize sua equipe e atenda com IA pela API oficial do WhatsApp.</p>
+            <ul>
+              <li>Chatbots e agentes de IA no WhatsApp</li>
+              <li>Painel multiatendente com histórico</li>
+              <li>Transferência inteligente para humanos</li>
+              <li>Dashboards e métricas de atendimento</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Como funciona -->
+    <section id="como-funciona" class="process">
+      <div class="container">
+        <div class="section-head">
+          <span class="kicker">Como trabalhamos</span>
+          <h2>Do diagnóstico à entrega, sem complicação</h2>
+          <p>Um processo enxuto e transparente, com você acompanhando cada etapa.</p>
+        </div>
+
+        <div class="steps">
+          <div class="step">
+            <h3>Diagnóstico</h3>
+            <p>Entendemos seu negócio, seus gargalos e onde a tecnologia gera mais resultado.</p>
+          </div>
+          <div class="step">
+            <h3>Proposta</h3>
+            <p>Apresentamos escopo, prazos e investimento claros — sem letras miúdas.</p>
+          </div>
+          <div class="step">
+            <h3>Desenvolvimento</h3>
+            <p>Construímos em ciclos curtos, com entregas parciais para sua validação.</p>
+          </div>
+          <div class="step">
+            <h3>Entrega e suporte</h3>
+            <p>Colocamos no ar, treinamos sua equipe e seguimos evoluindo a solução.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Case -->
+    <section id="cases">
+      <div class="container">
+        <div class="case-box">
+          <div>
+            <span class="kicker">Case próprio</span>
+            <h2>CuidaAi: cuidado preventivo em saúde com IA no WhatsApp</h2>
+            <p>Desenvolvemos do zero uma plataforma que acompanha pacientes pelo WhatsApp, interpreta mensagens, imagens e áudios com IA e envia alertas para médicos e cuidadores — com dados protegidos conforme a LGPD.</p>
+            <p>A mesma tecnologia que usamos aqui está disponível para o seu negócio.</p>
+          </div>
+          <div class="case-list">
+            <div class="case-item">
+              <i class="dot"></i>
+              <div><strong>Agentes de IA multimodais</strong><span>Texto, voz e imagem processados automaticamente.</span></div>
+            </div>
+            <div class="case-item">
+              <i class="dot"></i>
+              <div><strong>WhatsApp Business API</strong><span>Integração oficial com a Meta, grupos e notificações.</span></div>
+            </div>
+            <div class="case-item">
+              <i class="dot"></i>
+              <div><strong>Dashboards e alertas</strong><span>Insights em tempo real para quem precisa decidir.</span></div>
+            </div>
+            <div class="case-item">
+              <i class="dot"></i>
+              <div><strong>Segurança e LGPD</strong><span>Criptografia de dados sensíveis e acesso controlado.</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Benefícios -->
+    <section style="padding-top: 0;">
+      <div class="container">
+        <div class="section-head">
+          <span class="kicker">Por que nós</span>
+          <h2>Tecnologia sob medida, feita por quem entende de operação</h2>
+        </div>
+        <div class="benefits">
+          <div class="benefit">
+            <div class="icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div>
+            <h3>Entrega ágil</h3>
+            <p>Resultados em semanas, não em meses.</p>
+          </div>
+          <div class="benefit">
+            <div class="icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7l8-4z"/></svg></div>
+            <h3>Segurança e LGPD</h3>
+            <p>Boas práticas de proteção de dados desde o início.</p>
+          </div>
+          <div class="benefit">
+            <div class="icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19V5M4 19h16M8 15l4-4 3 3 5-6"/></svg></div>
+            <h3>Foco em resultado</h3>
+            <p>Medimos conversão, tempo de resposta e economia.</p>
+          </div>
+          <div class="benefit">
+            <div class="icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2"/><circle cx="10" cy="7" r="4"/><path d="M21 21v-2a4 4 0 0 0-3-3.9M16 3.1a4 4 0 0 1 0 7.8"/></svg></div>
+            <h3>Suporte próximo</h3>
+            <p>Atendimento direto com quem desenvolve.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="faq">
+      <div class="container">
+        <div class="section-head">
+          <span class="kicker">Dúvidas frequentes</span>
+          <h2>Perguntas que sempre recebemos</h2>
+        </div>
+        <div class="faq-list">
+          <details>
+            <summary>Vocês usam a API oficial do WhatsApp?</summary>
+            <p>Sim. Nossas plataformas de atendimento utilizam a WhatsApp Business Platform (Cloud API) da Meta, garantindo estabilidade, segurança e conformidade com as políticas oficiais.</p>
+          </details>
+          <details>
+            <summary>Quanto tempo leva para desenvolver uma landing page?</summary>
+            <p>Em geral, de 1 a 3 semanas, dependendo da quantidade de seções, integrações e da disponibilidade do conteúdo (textos e imagens).</p>
+          </details>
+          <details>
+            <summary>A automação funciona com os sistemas que já uso?</summary>
+            <p>Na maioria dos casos, sim. Integramos com CRMs, ERPs, planilhas, agendas, gateways de pagamento e qualquer sistema que ofereça API ou exportação de dados.</p>
+          </details>
+          <details>
+            <summary>O atendimento com IA substitui minha equipe?</summary>
+            <p>Ele assume as tarefas repetitivas e o atendimento inicial 24 horas por dia. Quando necessário, a conversa é transferida para um atendente humano com todo o histórico.</p>
+          </details>
+          <details>
+            <summary>Como funciona o investimento?</summary>
+            <p>Cada projeto recebe uma proposta personalizada, com escopo, prazo e valores definidos. Para plataformas e automações também oferecemos planos mensais de manutenção e evolução.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section id="contato" class="cta">
+      <div class="container">
+        <h2>Vamos automatizar o seu negócio?</h2>
+        <p>Conte o que você precisa e receba um diagnóstico gratuito com a melhor solução para a sua empresa.</p>
+        <div class="hero-actions">
+          <a href="https://wa.me/5581995230231?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento." class="btn btn-primary" target="_blank" rel="noopener">Falar no WhatsApp</a>
+          <a href="mailto:alberto@cuidaai.tech?subject=Quero%20um%20or%C3%A7amento" class="btn btn-ghost">Enviar e-mail</a>
+        </div>
+        <p style="margin-top: 20px; font-size: .95rem;">WhatsApp <a href="https://wa.me/5581995230231" target="_blank" rel="noopener">(81) 99523-0231</a> · <a href="mailto:alberto@cuidaai.tech">alberto@cuidaai.tech</a></p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div style="max-width: 320px;">
+          <a href="#" class="brand">CuidaAi<span>Tech</span></a>
+          <p>Automações, landing pages e plataformas de atendimento com inteligência artificial.</p>
+        </div>
+        <div>
+          <h4>Serviços</h4>
+          <ul>
+            <li><a href="#servicos">Automações com IA</a></li>
+            <li><a href="#servicos">Landing Pages</a></li>
+            <li><a href="#servicos">Plataformas de Atendimento</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="termos.html">Termos de Uso</a></li>
+            <li><a href="privacidade.html">Política de Privacidade</a></li>
+            <li><a href="exclusao-de-dados.html">Exclusão de Dados</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contato</h4>
+          <ul>
+            <li><a href="https://wa.me/5581995230231" target="_blank" rel="noopener">WhatsApp (81) 99523-0231</a></li>
+            <li><a href="mailto:alberto@cuidaai.tech">alberto@cuidaai.tech</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        © <span id="year">2026</span> CuidaAi Tech. Todos os direitos reservados.
+      </div>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/5581995230231?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento." class="wa-float" target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
+    <svg width="30" height="30" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1-.2.3-.8.9-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.4-.5c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 2-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3zM12 21.8c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4C2.7 15.6 2.2 13.8 2.2 12 2.2 6.6 6.6 2.2 12 2.2c2.6 0 5.1 1 6.9 2.9 1.8 1.8 2.9 4.3 2.9 6.9 0 5.4-4.4 9.8-9.8 9.8zM20.5 3.5C18.2 1.2 15.2 0 12 0 5.4 0 0 5.4 0 12c0 2.1.6 4.2 1.6 6L0 24l6.2-1.6c1.8 1 3.8 1.5 5.8 1.5 6.6 0 12-5.4 12-12 0-3.2-1.3-6.2-3.5-8.4z"/></svg>
+  </a>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
